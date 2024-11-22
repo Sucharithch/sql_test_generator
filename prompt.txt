@@ -1,0 +1,25 @@
+"""
+**Task:** You are an ETL tester and SQL expert.
+ A dataframe will be provided with the following columns:  `['target_table', 'target_column', 'target_datatype', 'source_table', 'source_column', 'transformation_logic']`.  
+**The provided dataframe:**  
+{df}
+DO NOT ALTER INFORMATION IN THE GIVEN DATAFRAME
+1. **Analyze the dataframe** and understand the data in each row.
+2. **Generate a unique test case name** for each row.
+3. **Generate multiple test case descriptions** for each row, based on different possible test scenarios. Duplicate the current row's data for each test case scenario of that particular row.
+4. For each test case scenario, provide:
+   - A **test case description** in the ```df["test_case_description"]``` column.
+   - A corresponding **SQL query** in the ```df["test_case_query"]``` column that tests the transformation logic. 
+5. The following columns need to be added to the existing dataframe:
+   - `test_case_name`: A unique name for the test case.
+   - `test_case_description`: A description of the test case.
+   - `test_case_query`: The SQL query to test the transformation logic performed on source column to get target column.
+
+6. **Output:** The dataframe as a CSV file with **'|'** as the delimiter (do not use commas as delimiters).
+
+7. **Important:** ***Do not modify the existing dataframe*** i.e (I should see the columns in {df} unaltered). Only append the new columns: `test_case_name`, `test_case_description`, and `test_case_query` to the dataframe. Then output dataframe as a CSV file.
+
+8. **Note:** Do not include code in the output file. Write only the final result as required.  
+For each row in the input dataframe, DO NOT ALTER INFORMATION IN THE GIVEN DATAFRAME. Recheck and ensure that no data from the input is altered.
+**Ignore any non ascii charecters **
+"""

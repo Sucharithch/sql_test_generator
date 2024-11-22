@@ -1,0 +1,15 @@
+target_table,target_column,target_datatype,source_table,source_column,transformation_logic
+SILVER.TDS_ICTF.ADJUSTMENTS,meta_ingest_datetime,timestamp,BRONZE.TDS_ICTF,meta_ingest_datetime,1:1
+SILVER.TDS_ICTF.ADJUSTMENTS,contract_id,string,BRONZE.TDS_ICTF,way4_contract_id,"Right trim spaces; IF LENGTH of way4_contract_id = 18 THEN SUBSTR(way4_contract_id,1,15) ELSE if LENGTH of way4_contract_id = 24 THEN SUBSTR(way4_contract_id,7,15) Else if LENGTH of way4_contract_id = 26 THEN SUBSTR(way4_contract_id,9,15) else null "
+SILVER.TDS_ICTF.ADJUSTMENTS,card_acceptor_id,string,BRONZE.TDS_ICTF,way4_contract_id,"Right trim spaces; IF length of way4_contractor_id = 20 THEN SUBSTR(way4_contractor_id,3,15) ELSE null"
+SILVER.TDS_ICTF.ADJUSTMENTS,site_id,string,BRONZE.TDS_ICTF,"way4_contract_id, contract_level","Right trim spaces; IF contract_level = L AND length of way4_contract_id = 24 THEN SUBSTR(way4_contract_id,1,6) ELSE null"
+SILVER.TDS_ICTF.ADJUSTMENTS,terminal_id,string,BRONZE.TDS_ICTF,way4_contract_id,"Right trim spaces; IF length of way4_contractor_id = 26 THEN SUBSTR(way4_contractor_id,1,8) ELSE null"
+SILVER.TDS_ICTF.ADJUSTMENTS,adjustment_id,string,BRONZE.TDS_ICTF,payment_reference,1:1
+SILVER.TDS_ICTF.ADJUSTMENTS,adjustment_reference,string,BRONZE.TDS_ICTF,payment_id,1:1
+SILVER.TDS_ICTF.ADJUSTMENTS,message_code,string,BRONZE.TDS_ICTF,way4_message_code,1:1
+SILVER.TDS_ICTF.ADJUSTMENTS,adjustment_datetime,datetime,BRONZE.TDS_ICTF,way4_creation_datetime,Convert to datetime
+SILVER.TDS_ICTF.ADJUSTMENTS,posting_date,date,BRONZE.TDS_ICTF,way4_billing_date,Convert to date
+SILVER.TDS_ICTF.ADJUSTMENTS,adjustment_currency_alphanumeric,string,BRONZE.TDS_ICTF,net_amount_currency,Convert value from ISO 4217 numeric to ISO 4217 alpha-3 using CURRENCY table
+SILVER.TDS_ICTF.ADJUSTMENTS,adjustment_amount,integer,BRONZE.TDS_ICTF,net_amount,1:1
+SILVER.TDS_ICTF.ADJUSTMENTS,adjustment_description,string,BRONZE.TDS_ICTF,way4_description,1:1
+SILVER.TDS_ICTF.ADJUSTMENTS,brand_id,string,BRONZE.TDS_ICTF,brand_id,1:1
